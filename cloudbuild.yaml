@@ -1,6 +1,12 @@
 steps:
-- name: 'bash'
-  args: ['echo', '구글 클라우드 빌드 CI/CD 테스트']
-
-- name: 'bash'
-  args: ['./test.bash']
+- name: 'gcr.io/cloud-builders/gcloud'
+  entrypoint: 'bash'
+  args:
+  - '-eEuo'
+  - 'pipefail'
+  - '-c'
+  - |-
+    echo "단순 문구 출력"
+    echo "-------------"
+    echo "스크립트 파일 실행"
+    bash ./test.bash
